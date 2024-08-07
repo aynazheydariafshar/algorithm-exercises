@@ -15,6 +15,16 @@ Space Complexity - 0(1)
 
 **/
 
-function isSubsequence() {
-  // good luck. Add any arguments you deem necessary.
+function isSubsequence(str1, str2) {
+  let left = 0;
+  let right = 0;
+  if (!str1) return true;
+  while (right < str2.length) {
+    if (str1[left] === str2[right]) left++;
+    if (left === str1.length) return true;
+    right++;
+  }
+  return false;
 }
+
+console.log(isSubsequence("abc", "acb"));

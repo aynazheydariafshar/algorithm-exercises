@@ -13,6 +13,17 @@ averagePair ([-1,0,3,4,5,6], 4.1) // false
 averagePair([1,4) // false
 **/
 
-function averagePair(){
-  // add whatever parameters you deem necessary - good luck!
+function averagePair(arr, target) {
+  let left = 0;
+  let right = arr.length - 1;
+  let ave = (arr[left] + arr[right]) / 2;
+  while (left < right) {
+    if (target === ave) return true;
+    else if (target > ave) left++;
+    else right--;
+    ave = (arr[left] + arr[right]) / 2;
+  }
+  return false;
 }
+
+console.log(averagePair([1, 2, 4], 1.5));

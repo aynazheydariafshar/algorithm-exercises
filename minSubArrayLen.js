@@ -15,7 +15,26 @@ Time Complexity - O(n)
 Space Complexity - O(1)
 **/
 
+function minSubArrayLen(arr, target) {
+  let total = 0;
+  let start = 0;
+  let end = 0;
+  let length = Infinity;
 
-function minSubArrayLen(){
-  // add whatever parameters you deem necessary - good luck!
+  while (start < arr.length) {
+    if (total < target && end < arr.length) {
+      total += arr[end];
+      end++;
+    } else if (total >= target) {
+      length = Math.min(length, end - start);
+      total -= arr[start];
+      start++;
+    } else {
+      break;
+    }
+  }
+
+  return length === Infinity ? 0 : length;
 }
+
+console.log(minSubArrayLen([2, 3, 1, 2, 4, 3], 7));

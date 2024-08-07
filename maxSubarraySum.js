@@ -16,6 +16,19 @@ Time Complexity - O(N)
 Space Complexity - 0(1)
 **/
 
-function maxSubarraySum(){
-  // add whatever parameters you deem necessary - good luck!
+function maxSubarraySum(arr, target) {
+  if (target > arr.length) return null;
+  let max = 0;
+  let temp;
+  for (let i = 0; i < target; i++) {
+    max += arr[i];
+  }
+  temp = max;
+  for (let i = target; i < arr.length; i++) {
+    temp = temp - arr[i - target] + arr[i];
+    max = Math.max(max, temp);
+  }
+  return max;
 }
+
+console.log(maxSubarraySum([2, 31], 3));

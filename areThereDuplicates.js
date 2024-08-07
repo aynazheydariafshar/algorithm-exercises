@@ -13,6 +13,12 @@ Time - O(n log n)
 Space - O(1)
 **/
 
-function areThereDuplicates() {
-  // good luck. (supply any arguments you deem necessary.)
+function areThereDuplicates(...args) {
+  args.sort();
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === args[i + 1]) return true;
+  }
+  return false;
 }
+
+console.log(areThereDuplicates(null, 2, "rr", 1, -5, "a", null));
